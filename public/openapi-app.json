@@ -1,0 +1,296 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Fancave Application",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/list/news": {
+      "get": {
+        "x-controller-name": "SportsController",
+        "x-operation-name": "findNews",
+        "tags": [
+          "SportsController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of News instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/News"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "SportsController.findNews"
+      }
+    },
+    "/api/list/players": {
+      "get": {
+        "x-controller-name": "SportsController",
+        "x-operation-name": "findPlayers",
+        "tags": [
+          "SportsController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Players instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "team",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "SportsController.findPlayers"
+      }
+    },
+    "/api/list/team": {
+      "get": {
+        "x-controller-name": "SportsController",
+        "x-operation-name": "getTeams",
+        "tags": [
+          "SportsController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Team instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Team"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "team",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "SportsController.getTeams"
+      }
+    },
+    "/api/team/scores": {
+      "get": {
+        "x-controller-name": "SportsController",
+        "x-operation-name": "findScores",
+        "tags": [
+          "SportsController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Score instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Scores"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "league",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "SportsController.findScores"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://127.0.0.1:3080"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Scores": {
+        "title": "Scores",
+        "properties": {
+          "away": {
+            "type": "string"
+          },
+          "awayScore": {
+            "type": "string"
+          },
+          "awayLogo": {
+            "type": "string"
+          },
+          "home": {
+            "type": "string"
+          },
+          "homeScore": {
+            "type": "string"
+          },
+          "homeLogo": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "News": {
+        "title": "News",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "urlToImage": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Player": {
+        "title": "Player",
+        "properties": {
+          "playerId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "league": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "school": {
+            "type": "string"
+          },
+          "birthplace": {
+            "type": "string"
+          },
+          "picture": {
+            "type": "string"
+          },
+          "twitter": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      },
+      "Team": {
+        "title": "Team",
+        "properties": {
+          "arena": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "league": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "shortname": {
+            "type": "string"
+          },
+          "lat": {
+            "type": "string"
+          },
+          "long": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

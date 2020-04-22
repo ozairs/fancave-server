@@ -1,0 +1,57 @@
+{
+  "name": "MySportsFeeds",
+  "connector": "rest",
+  "options": {
+    "headers": {
+      "accept": "application/json"
+    },
+    "timeout": 15000
+  },
+  "operations": [
+    {
+      "template": {
+        "name" : "scores",
+        "method": "GET",
+        "url": "https://api.mysportsfeeds.com/v2.1/pull/{league}/{season}/date/{date}/games.json",
+        "headers": {
+          "accepts": "application/json",
+          "Authorization" : "Basic {access_token}"
+
+        },
+        "responsePath" : "games"
+      },
+      "functions": {
+        "getScores": ["league", "season", "date", "access_token"]
+      }
+    },
+    {
+      "template": {
+        "name" : "players",
+        "method": "GET",
+        "url": "https://api.mysportsfeeds.com/v2.1/pull/{league}/players.json?limit=100&rosterstatus=assigned-to-roster&team={team}",
+        "headers": {
+          "accepts": "application/json",
+          "Authorization" : "Basic {access_token}"
+        },
+        "responsePath" : "players"
+      },
+      "functions": {
+        "getPlayers": ["league", "team", "access_token"]
+      }
+    },
+    {
+      "template": {
+        "name" : "news",
+        "method": "GET",
+        "url": "https://sports.yahoo.com/{league}/rss",
+        "headers": {
+          "accepts": "application/json"
+        },
+        "responsePath" : ""
+      },
+      "functions": {
+        "getNews": ["league"]
+      }
+    }
+  ]
+}

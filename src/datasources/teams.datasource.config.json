@@ -1,0 +1,6 @@
+{
+  "name": "teams_grpc",
+  "connector": "loopback-connector-grpc",
+  "spec": "dist/grpc/fancave-teams.proto",
+  "url": "localhost:50051"
+}

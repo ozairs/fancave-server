@@ -1,0 +1,77 @@
+
+
+# @name response
+
+# Parameters
+@url=https://127.0.0.1:3080
+@league=nba
+@team=tor
+@season=2019-2020-regular
+@date=20200306
+
+### News from League {league}
+GET {{url}}/api/list/news?league={{league}} HTTP/1.1
+Authorization: Basic test
+
+### GraphQL: News from League {league}
+POST http://localhost:3001/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{"query":"{\n  apiListNews(league: \"nba\") {\n    description\n    title\n    url\n    urlToImage}\n}\n"}
+
+
+
+### Players from specific {team} in league {league}
+GET http://127.0.0.1:3000/api/list/players?league={{league}}&team={{team}} HTTP/1.1
+
+### GraphQL: Players from specific {team} in league {league}
+POST http://localhost:3001/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{"query":"{  apiListPlayers(league: \"nba\", team: \"tor\") {\n    birthplace\n    league\n    logo\n    name\n    picture\n    position\n    twitter\n  }\n}\n"}
+
+
+
+### Scores from specific {team} in league {league} on date {date}
+GET http://127.0.0.1:3000/api/team/scores?league={{league}}&season={{season}}&date={{date}} HTTP/1.1
+
+### GraphQL: Scores from specific {team} in league {league} on date {date}
+POST http://localhost:3001/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{"query":"{\napiTeamScores(league: \"nba\", season: \"2019-2020-regular\", date: \"20200306\") {\n  away\n  awayLogo\n  awayScore\n  home\n  homeLogo\n  homeScore\n  url\n}\n}","variables":null}
+
+
+
+### Teams from league {league}
+GET http://127.0.0.1:3000/api/list/team?league={{league}} HTTP/1.1
+
+### GraphQL: Teams from league {league}
+POST http://localhost:3001/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{"query":"{\napiListTeam(league: \"nba\") {\n  arena\n  city\n  lat\n  long\n  shortname\n}\n}","variables":null}
+
+
+### Specific Teams from league {league}
+
+GET http://127.0.0.1:3000/api/list/team?league={{league}}&team={{team}} HTTP/1.1
+
+### GraphQL: Teams from league {league}
+POST http://localhost:3001/graphql HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{"query":"{\napiListTeam(league: \"nba\") {\n  arena\n  city\n  lat\n  logo\n  long\n  name\n  shortname\n}\n}","variables":null}
+
+
+variables content(optional)
+# Reference
+
+- https://github.com/Huachao/vscode-restclient
+- https://dev.to/techwatching/testing-your-api-with-rest-client-h23
+

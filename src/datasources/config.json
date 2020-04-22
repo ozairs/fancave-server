@@ -1,0 +1,12 @@
+{
+  "images": {
+    "url": "http://127.0.0.1:3000"
+  },
+  "news": {
+    "url": "https://www.google.com/search?q="
+  },
+  "feed": {
+    "name": "mysportsfeeds",
+    "access_token": "MDVmYzQ5YmMtYTRjNi00ZTA5LTk0MGEtYTYxOTRmOk1ZU1BPUlRTRkVFRFM="
+  }
+}
