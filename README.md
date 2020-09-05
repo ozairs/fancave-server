@@ -3,6 +3,7 @@
 1. Run the Teams Service (GRPC service)
 
 ```
+git clone https://github.com/ozairs/fancave-grpc.git
 cd fancave-grpc
 node /dist/fancave-server.js
 npm run start
@@ -12,9 +13,13 @@ npm run start
 2. Run the Fancave REST service
 
 ```
+git clone https://github.com/ozairs/fancave-server.git
 cd fancave-server
+npm install
+npm run clean
+npm run build
 npm run start
-> http://localhost:3000/
+> http://localhost:3080/
 ```
 
 3. Run the Fancave GraphQL service
